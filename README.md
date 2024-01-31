@@ -2,7 +2,7 @@
 
 ## Introduction
 
-C is a powerful general-purpose programming language known for its versatility. This project focuses on binary trees and covers various concepts related to them. Special thanks to [Hicham Bourezi] for contributing to this project!
+C is a powerful general-purpose programming language known for its versatility. This project focuses on binary trees and covers various concepts related to them. Special thanks to [Aissam Abakkar](https://github.com/Aissamab) for contributing to this project!
 
 ## Project Goals
 
