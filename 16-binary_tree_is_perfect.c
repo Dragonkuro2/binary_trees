@@ -1,27 +1,33 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_height - A function that measures the height of a binary tree.
+ * perfect_tree - A function that measures the height of a binary tree.
  *
  * @tree: a pointer to the root node of the tree to measure the height.
  *
  * Return: the height of the tree, if it fails it'll return 0.
  */
 
-size_t binary_tree_height(const binary_tree_t *tree)
+size_t perfect_tree(const binary_tree_t *tree)
 {
-	int height1, height2;
+	int left = 0, right = 0;
 
-	if (tree == NULL)
+	if (tree->left && tree->right)
+	{
+		left = 1 + perfect_tree(tree->left);
+		right = 1 + perfect_tree(tree->right);
+		if (right == left && right != 0 && left != 0)
+			return (right);
 		return (0);
-	if (tree->left == NULL && tree->right == NULL)
-		return (0);
-	height1 = binary_tree_height(tree->left);
-	height2 = binary_tree_height(tree->right);
-	if (height1 > height2)
-		return (height1 + 1);
+	}
+	else if (!tree->left && !tree->right)
+	{
+		return (1);
+	}
 	else
-		return (height2 + 1);
+	{
+		return (0);
+	}
 }
 
 /**
@@ -34,17 +40,12 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int height1, height2;
+	int result;
 
 	if (tree == NULL)
 		return (0);
-	if (tree->left == NULL && tree->right == NULL)
-		return (0);
-	height1 = binary_tree_height(tree->left);
-	height2 = binary_tree_height(tree->right);
-	if (height1 == height2)
+	result =  perfect_tree(tree);
+	if (result != 0)
 		return (1);
-	else
-		return (0);
-
+	return (0);
 }
